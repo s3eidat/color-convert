@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Color Convert — HEX, RGB, HSL, OKLCH &amp; CMYK Converter | S3eidat Tools</title>
+<meta name="description" content="Paste any CSS color (hex, rgb, hsl, hwb, oklch, oklab or a name) and get every format with copy buttons, alpha, nearest named color and contrast against white and black. Free and private.">
+<meta property="og:title" content="Color Convert — HEX, RGB, HSL, OKLCH and CMYK">
+<meta property="og:description" content="Any CSS color to every format, with alpha, nearest name and contrast. Runs in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="color-convert">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Color Convert</h1>
+    <p>Paste any CSS color: <code>#3dd6d0</code>, <code>rgb(…)</code>, <code>hsl(…)</code>, <code>oklch(…)</code> or a name like <code>tomato</code>. Get every format, with alpha, the nearest named color and contrast.</p>
+  </section>
+
+  <div class="grid-2 cc-grid">
+    <section class="card stack">
+      <label class="field">Color
+        <input class="input big-in mono" id="in" autocomplete="off" spellcheck="false" dir="ltr" placeholder="#3dd6d0, rgb(61 214 208), tomato…">
+      </label>
+      <div class="row">
+        <input type="color" id="picker" aria-label="Pick a color">
+        <label class="field grow alpha-f"><span class="row between"><span>Alpha</span><span class="mono" id="alpha-v">100%</span></span>
+          <input type="range" id="alpha" min="0" max="100" value="100">
+        </label>
+        <button class="btn ghost small" id="random"><svg class="i"><use href="#i-refresh"/></svg>Random</button>
+      </div>
+      <div class="swatch checker" id="swatch-wrap"><div class="swatch-fill" id="swatch"><span id="sw-label"></span></div></div>
+      <p class="faint err" id="err" role="alert"></p>
+      <div class="stats" id="contrast"></div>
+      <div class="named" id="named"></div>
+    </section>
+
+    <section class="card">
+      <div class="row between">
+        <h2>Formats</h2>
+        <span class="chip warn" id="gamut" hidden>Outside sRGB: clipped</span>
+      </div>
+      <div class="formats mt" id="formats"></div>
+      <p class="faint mt">CMYK is the simple formula with no printer profile; ask your printer for exact values.</p>
+    </section>
+  </div>
+
+  <section class="card mt">
+    <div class="row between">
+      <h2>Lightness scale <small>OKLCH, same hue and chroma</small></h2>
+      <span class="faint">Click a step to use it</span>
+    </div>
+    <div class="scale mt" id="scale"></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
